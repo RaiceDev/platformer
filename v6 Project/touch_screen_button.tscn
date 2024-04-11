@@ -1,0 +1,78 @@
+[gd_scene load_steps=13 format=3 uid="uid://qjqf5ll1fb3m"]
+
+[ext_resource type="Texture2D" uid="uid://3lqehsf6tmyx" path="res://addons/kenney_input_prompts/Keyboard & Mouse/Vector/keyboard_arrow_left.svg" id="1_1qikx"]
+[ext_resource type="Texture2D" uid="uid://droflnuwism3n" path="res://addons/kenney_input_prompts/Keyboard & Mouse/Vector/keyboard_arrow_right.svg" id="1_to3yd"]
+[ext_resource type="Texture2D" uid="uid://d3mfryef1aohh" path="res://addons/kenney_input_prompts/Keyboard & Mouse/Vector/keyboard_arrow_left_outline.svg" id="2_6ph2x"]
+[ext_resource type="Texture2D" uid="uid://dhpmnbhqb78ry" path="res://addons/kenney_input_prompts/Keyboard & Mouse/Vector/keyboard_arrow_up.svg" id="3_mdnvv"]
+[ext_resource type="Script" path="res://Scripts/hidetxt.gd" id="4_fe830"]
+[ext_resource type="Texture2D" uid="uid://dq5dere8capp" path="res://addons/kenney_input_prompts/Keyboard & Mouse/Vector/keyboard_arrow_right_outline.svg" id="4_toxab"]
+[ext_resource type="FontFile" uid="uid://c5jfg30l15oiv" path="res://PixeloidSans-mLxM.ttf" id="4_y8ob6"]
+[ext_resource type="Texture2D" uid="uid://d207dgyam57tp" path="res://invisible tile.png" id="5_y80jv"]
+[ext_resource type="Texture2D" uid="uid://c06p5fdo1oox3" path="res://addons/kenney_input_prompts/Keyboard & Mouse/Vector/keyboard_arrow_up_outline.svg" id="6_vvmg3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c4q0i"]
+size = Vector2(49, 49)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lee5g"]
+size = Vector2(49, 49)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jphog"]
+size = Vector2(49, 49)
+
+[node name="CanvasLayer" type="CanvasLayer"]
+follow_viewport_enabled = true
+
+[node name="TouchScreenButton2" type="TouchScreenButton" parent="."]
+texture_filter = 1
+position = Vector2(13, 433)
+scale = Vector2(3, 3)
+texture_normal = ExtResource("1_1qikx")
+texture_pressed = ExtResource("2_6ph2x")
+shape = SubResource("RectangleShape2D_c4q0i")
+passby_press = true
+action = "left"
+
+[node name="TouchScreenButton" type="TouchScreenButton" parent="."]
+texture_filter = 1
+position = Vector2(248, 433)
+scale = Vector2(3, 3)
+texture_normal = ExtResource("1_to3yd")
+texture_pressed = ExtResource("4_toxab")
+shape = SubResource("RectangleShape2D_lee5g")
+passby_press = true
+action = "Right"
+
+[node name="TouchScreenButton3" type="TouchScreenButton" parent="."]
+texture_filter = 1
+position = Vector2(943, 433)
+scale = Vector2(3, 3)
+texture_normal = ExtResource("3_mdnvv")
+texture_pressed = ExtResource("6_vvmg3")
+shape = SubResource("RectangleShape2D_jphog")
+passby_press = true
+action = "Jump"
+
+[node name="TouchScreenButton4" type="TouchScreenButton" parent="."]
+scale = Vector2(2.24979, 1.26652)
+texture_normal = ExtResource("5_y80jv")
+script = ExtResource("4_fe830")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+offset_left = 370.0
+offset_top = 193.0
+offset_right = 808.0
+offset_bottom = 233.0
+theme_override_fonts/normal_font = ExtResource("4_y8ob6")
+theme_override_font_sizes/normal_font_size = 32
+text = "Use the buttons to move!"
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="."]
+offset_left = 450.0
+offset_top = 230.0
+offset_right = 888.0
+offset_bottom = 270.0
+theme_override_fonts/normal_font = ExtResource("4_y8ob6")
+theme_override_font_sizes/normal_font_size = 20
+text = "Click anywhere to close"
+
+[connection signal="pressed" from="TouchScreenButton4" to="TouchScreenButton4" method="_on_pressed"]
